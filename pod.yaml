@@ -7,5 +7,5 @@ metadata:
     tier: front-end
 spec:
   containers:
-    - name: nginx-controller
-      image: nginx
+  - name: nginx-controller
+    image: nginx
