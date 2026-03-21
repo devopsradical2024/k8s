@@ -4,7 +4,7 @@ metadata:
   name: myapp-rc
   labels:
     app: myapp
-    tire: front-end
+    tier: front-end
 spec:
   template:
     metadata: 
