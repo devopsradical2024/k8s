@@ -1,0 +1,14 @@
+# kubectl lable nodes node1 size=large
+# large or medium
+# Not small
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  nodeSelector:
+    size: large
+  containers:
+  - name: nginx-controller
+    image: nginx
