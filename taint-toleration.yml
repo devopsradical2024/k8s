@@ -1,4 +1,4 @@
-# kubectl taint nodes node1 type=myapp:NoSchedule
+# kubectl taint nodes node1 type=myapp:NoSchedule/PreferNoSchedule/NoExecute
 
 apiVersion: v1
 kind: Pod
