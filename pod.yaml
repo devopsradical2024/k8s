@@ -18,3 +18,8 @@ spec:
       limits:
         cpu: "500m"
         memory: "256Mi"
+  tolerations:
+  - key: "server"
+    operator: "Equal"
+    value: "DB"
+    effect: "NoSchedule"
