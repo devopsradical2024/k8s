@@ -6,7 +6,12 @@ metadata:
     app: myapp
     tier: front-end
 spec:
-  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1   # 1 pod can go down during the update
+      maxSurge: 1         # 1 extra pod can be created during the update
+  replicas: 2                
   selector:
     matchLabels:
       app: myapp
@@ -30,15 +35,13 @@ spec:
           limits:
             cpu: "500m"
             memory: "256Mi"
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 10
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 5
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/os
+                    operator: In
+                    values:
+                    - linux
+                    
