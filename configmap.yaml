@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-config
+data:
+  DB_HOST: "db.example.com"
+  DB_PORT: "5432"
+
+# kubectl create configmap db-config \
+# --from-literal=DB_HOST=db.example.com \
+# --from-literal=DB_PORT=5432
